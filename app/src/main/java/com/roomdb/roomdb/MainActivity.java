@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                new bgthred().start();
             }
         });
 
@@ -49,18 +49,24 @@ public class MainActivity extends AppCompatActivity {
                     AppDatabase.class, "userdatabase").build();
             UserDao userDao = db.userDao();
 
-            //insert user into database
+            /// Create a User object with the provided values
+            User user = new User(0, name.getText().toString(), email.getText().toString(), contact.getText().toString());
 
+            // Insert the user into the database
+            userDao.insertUser(user);
 
-            userDao.insertUser(Integer.parseInt(id.getText().toString()), name.getText().toString(), email.getText().toString(), contact.getText().toString());
-
-            //set all fields empty
-            id.setText("");
-            name.setText("");
-            email.setText("");
-            contact.setText("");
-            message.setText("Inserted");
-            message.setVisibility(View.VISIBLE);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Set all fields empty
+                    id.setText("");
+                    name.setText("");
+                    email.setText("");
+                    contact.setText("");
+                    message.setText("Inserted");
+                    message.setVisibility(View.VISIBLE);
+                }
+            });
 
         }
     }
