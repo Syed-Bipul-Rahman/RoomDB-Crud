@@ -7,5 +7,7 @@ import androidx.room.Insert;
 public interface UserDao {
 
     @Insert
-    void insertAll(User users);
+    //void insertUser(User users);
+
+    void insertUser(int id, String name, String email, String contact);
 }

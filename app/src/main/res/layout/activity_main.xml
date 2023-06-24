@@ -16,6 +16,17 @@
         android:textColor="@color/black"
         android:textSize="22sp" />
 
+    <TextView
+        android:id="@+id/massage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:visibility="gone"
+        android:textColor="@color/success_color"
+        android:textSize="22sp" />
+
     <EditText
         android:id="@+id/eid"
         android:layout_width="match_parent"
